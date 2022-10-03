@@ -21,6 +21,34 @@ from formating import bold, underline, strike, hr, percent
         '''
     )
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<  col_cap  >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+    
+def col_cap(my_string):
+    '''
+    Takes in the name of a column. Assumes that the column name is all lower case and split_with_underscores.
+    
+    returns the column name Split With Underscores (lol, not with underscores and each word is capitalized)
+    
+    usually used to make a title for a plot from a column name
+    
+    Parameters:
+    --------------
+    my_string : a string
+    
+    Returns:
+    --------------
+    a better string (if you want to use it in a title)
+    '''
+    new_string = my_string.split('_')
+
+    j=''
+    for i in new_string:
+        j += i.capitalize()
+        j += ' '
+
+    j = j.strip()
+
+    return j
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<  BOLD  >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 def bold(text):
@@ -69,13 +97,22 @@ def hr(n, suffix='', places=2, prefix='$'):
     return '%s%.1f %s%s' % (prefix, float(n)/base**(order*step), \
     prefixes[order], suffix)
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<  Percent  >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<  percent  >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 class percent(float):
     def __str__(self):
         return '{:.2%}'.format(self)
     def __repr__(self):
         return '{:.2%}'.format(self)
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<  Percent  >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+class Percent(float):
+    def __str__(self):
+        return '{:.0%}'.format(self)
+    def __repr__(self):
+        return '{:.0%}'.format(self)
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<  FLAT  >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
